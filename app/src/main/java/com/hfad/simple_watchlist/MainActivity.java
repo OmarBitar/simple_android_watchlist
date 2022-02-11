@@ -23,12 +23,14 @@ public class MainActivity extends AppCompatActivity {
 	public void onClickSeries(View view) {
 		Fragment seriesFrag = new seriesFragment();
 		FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+		ft.addToBackStack(null);
 		ft.replace(R.id.mainFragment,seriesFrag).commit();
 	}
 
 	public void onClickMovies(View view) {
 		Fragment movieFrag = new moviesFragment();
 		FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+		ft.addToBackStack(null);
 		ft.replace(R.id.mainFragment,movieFrag).commit();
 	}
 }
