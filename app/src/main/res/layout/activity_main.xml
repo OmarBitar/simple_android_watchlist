@@ -26,9 +26,8 @@
 		app:layout_constraintStart_toEndOf="@+id/Movies"
 		app:layout_constraintTop_toTopOf="parent" />
 
-	<fragment
+	<FrameLayout
 		android:id="@+id/mainFragment"
-		android:name="com.hfad.simple_watchlist.moviesFragment"
 		android:layout_width="match_parent"
 		android:layout_height="0dp"
 		app:layout_constraintBottom_toBottomOf="parent"
