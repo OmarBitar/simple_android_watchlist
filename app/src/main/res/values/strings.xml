@@ -2,6 +2,6 @@
 	<string name="app_name">simple_watchlist</string>
 	<string name="movies">Movies</string>
 	<string name="series">Series</string>
-	<!-- TODO: Remove or change this placeholder text -->
 	<string name="hello_movies_fragment">Hello from movies fragment</string>
+	<string name="hello_series_fragment">Hello from series fragment</string>
 </resources>
