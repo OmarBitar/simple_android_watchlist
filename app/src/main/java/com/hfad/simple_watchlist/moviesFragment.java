@@ -22,7 +22,8 @@ public class moviesFragment extends Fragment {
 		RecyclerView rc = (RecyclerView) view.findViewById(R.id.recycleView);
 		// see page 557 for differrent types of layout setups
 		rc.setLayoutManager(new GridLayoutManager(view.getContext(),2));
-		CustomAdapter adapter = new CustomAdapter(new MovieData().getFilmTitles());
+		MovieData movieData = new MovieData();
+		CustomAdapter adapter = new CustomAdapter(movieData.getFilmTitles(),movieData.getFilmPosters());
 		rc.setAdapter(adapter);
 		// Inflate the layout for this fragment
 		return view;

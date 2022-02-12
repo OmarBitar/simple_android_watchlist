@@ -3,6 +3,7 @@ package com.hfad.simple_watchlist;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
 
 	private String[] localDataSet;
+	private int[] imageDataSet;
 
 	/**
 	 * Provide a reference to the type of views that you are using
@@ -19,16 +21,22 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
 	 */
 	public static class ViewHolder extends RecyclerView.ViewHolder {
 		private final TextView textView;
+		private final ImageView imageView;
 
 		public ViewHolder(View view) {
 			super(view);
 			// Define click listener for the ViewHolder's View
 
 			textView = (TextView) view.findViewById(R.id.textView);
+			imageView = (ImageView) view.findViewById(R.id.imageView);
 		}
 
 		public TextView getTextView() {
 			return textView;
+		}
+
+		public ImageView getImageView() {
+			return imageView;
 		}
 	}
 
@@ -38,8 +46,9 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
 	 * @param dataSet String[] containing the data to populate views to be used
 	 * by RecyclerView.
 	 */
-	public CustomAdapter(String[] dataSet) {
+	public CustomAdapter(String[] dataSet, int[] imageSet) {
 		localDataSet = dataSet;
+		imageDataSet = imageSet;
 	}
 
 	// Create new views (invoked by the layout manager)
@@ -60,6 +69,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
 		// Get element from your dataset at this position and replace the
 		// contents of the view with that element
 		viewHolder.getTextView().setText(localDataSet[position]);
+		viewHolder.getImageView().setImageResource(imageDataSet[position]);
 	}
 
 	// Return the size of your dataset (invoked by the layout manager)
