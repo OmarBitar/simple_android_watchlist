@@ -3,6 +3,7 @@ package com.hfad.simple_watchlist;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -18,10 +19,10 @@ public class moviesFragment extends Fragment {
 
 		View view = inflater.inflate(R.layout.fragment_movies, container, false);
 
-		String movieData[] = {"batman","superman","inception","godfather","goodfellas"};
 		RecyclerView rc = (RecyclerView) view.findViewById(R.id.recycleView);
-		rc.setLayoutManager(new LinearLayoutManager(view.getContext()));
-		CustomAdapter adapter = new CustomAdapter(movieData);
+		// see page 557 for differrent types of layout setups
+		rc.setLayoutManager(new GridLayoutManager(view.getContext(),2));
+		CustomAdapter adapter = new CustomAdapter(new MovieData().getFilmTitles());
 		rc.setAdapter(adapter);
 		// Inflate the layout for this fragment
 		return view;
