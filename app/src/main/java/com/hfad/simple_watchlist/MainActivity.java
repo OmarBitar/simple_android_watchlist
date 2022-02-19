@@ -6,8 +6,13 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.RadioButton;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+
+	RadioButton like,dislike;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +23,15 @@ public class MainActivity extends AppCompatActivity {
 		Fragment movieFrag = new moviesFragment();
 		FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 		ft.replace(R.id.mainFragment,movieFrag).commit();
+
+		View cardViewLayout = getLayoutInflater().inflate(R.layout.text_row_item,null);
+		like = (RadioButton) cardViewLayout.findViewById(R.id.like);
+		dislike = (RadioButton) cardViewLayout.findViewById(R.id.dislike);
+
+
+		((RadioButton) like).setChecked(true);
+		boolean checked = ((RadioButton) like).isChecked();
+		Toast.makeText(this,"isChecked "+checked,Toast.LENGTH_SHORT).show();
 	}
 
 	public void onClickSeries(View view) {
@@ -32,5 +46,14 @@ public class MainActivity extends AppCompatActivity {
 		FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 		ft.addToBackStack(null);
 		ft.replace(R.id.mainFragment,movieFrag).commit();
+	}
+
+	public void onLike(View view) {
+		Toast.makeText(this,"liked",Toast.LENGTH_SHORT).show();
+	}
+
+	public void onDislike(View view) {
+
+		Toast.makeText(this,"disliked",Toast.LENGTH_SHORT).show();
 	}
 }
