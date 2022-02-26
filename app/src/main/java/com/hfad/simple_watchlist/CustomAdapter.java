@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,6 +15,16 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
 
 	private String[] localDataSet;
 	private int[] imageDataSet;
+	private boolean likeSatus;
+	private Listener listener;
+
+	interface Listener {
+		void onClick();
+	}
+
+	public void setListener(Listener listener) {
+		this.listener = listener;
+	}
 
 	/**
 	 * Provide a reference to the type of views that you are using
@@ -22,6 +33,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
 	public static class ViewHolder extends RecyclerView.ViewHolder {
 		private final TextView textView;
 		private final ImageView imageView;
+		private final RadioButton like;
 
 		public ViewHolder(View view) {
 			super(view);
@@ -29,6 +41,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
 
 			textView = (TextView) view.findViewById(R.id.textView);
 			imageView = (ImageView) view.findViewById(R.id.imageView);
+			like = (RadioButton) view.findViewById(R.id.like);
 		}
 
 		public TextView getTextView() {
@@ -38,6 +51,8 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
 		public ImageView getImageView() {
 			return imageView;
 		}
+
+		public RadioButton getLikeView() { return like; }
 	}
 
 	/**
@@ -49,6 +64,8 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
 	public CustomAdapter(String[] dataSet, int[] imageSet) {
 		localDataSet = dataSet;
 		imageDataSet = imageSet;
+		// TODO look into this
+//		likeSatus = true;
 	}
 
 	// Create new views (invoked by the layout manager)
@@ -70,6 +87,13 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
 		// contents of the view with that element
 		viewHolder.getTextView().setText(localDataSet[position]);
 		viewHolder.getImageView().setImageResource(imageDataSet[position]);
+		viewHolder.getLikeView().setChecked(true);
+		viewHolder.getLikeView().setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				listener.onClick();
+			}
+		});
 	}
 
 	// Return the size of your dataset (invoked by the layout manager)

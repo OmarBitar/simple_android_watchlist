@@ -45,7 +45,7 @@
 					android:layout_height="wrap_content"
 					android:layout_marginRight="20dp"
 					android:button="@drawable/baseline_thumb_up_black_24dp"
-					android:onClick="onLike" />
+					 />
 
 				<TextView
 					android:id="@+id/textView"

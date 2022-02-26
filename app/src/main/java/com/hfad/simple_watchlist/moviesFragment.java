@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 public class moviesFragment extends Fragment {
 
@@ -25,6 +26,12 @@ public class moviesFragment extends Fragment {
 		MovieData movieData = new MovieData();
 		CustomAdapter adapter = new CustomAdapter(movieData.getFilmTitles(),movieData.getFilmPosters());
 		rc.setAdapter(adapter);
+		adapter.setListener(new CustomAdapter.Listener() {
+			@Override
+			public void onClick() {
+				Toast.makeText(view.getContext(),"Liked",Toast.LENGTH_SHORT).show();
+			}
+		});
 		// Inflate the layout for this fragment
 		return view;
 	}

@@ -48,9 +48,6 @@ public class MainActivity extends AppCompatActivity {
 		ft.replace(R.id.mainFragment,movieFrag).commit();
 	}
 
-	public void onLike(View view) {
-		Toast.makeText(this,"liked",Toast.LENGTH_SHORT).show();
-	}
 
 	public void onDislike(View view) {
 
