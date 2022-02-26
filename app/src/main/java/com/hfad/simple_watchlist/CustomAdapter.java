@@ -20,6 +20,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
 
 	interface Listener {
 		void onLikeClick();
+		void onDisLikeClick();
 	}
 
 	public void setListener(Listener listener) {
@@ -34,6 +35,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
 		private final TextView textView;
 		private final ImageView imageView;
 		private final RadioButton like;
+		private final RadioButton disLike;
 
 		public ViewHolder(View view) {
 			super(view);
@@ -42,6 +44,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
 			textView = (TextView) view.findViewById(R.id.textView);
 			imageView = (ImageView) view.findViewById(R.id.imageView);
 			like = (RadioButton) view.findViewById(R.id.like);
+			disLike = (RadioButton) view.findViewById(R.id.dislike);
 		}
 
 		public TextView getTextView() {
@@ -53,6 +56,8 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
 		}
 
 		public RadioButton getLikeView() { return like; }
+
+		public RadioButton getDisLikeView() { return disLike; }
 	}
 
 	/**
@@ -89,6 +94,12 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
 			@Override
 			public void onClick(View view) {
 				listener.onLikeClick();
+			}
+		});
+		viewHolder.getDisLikeView().setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				listener.onDisLikeClick();
 			}
 		});
 	}

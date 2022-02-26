@@ -31,6 +31,11 @@ public class moviesFragment extends Fragment {
 			public void onLikeClick() {
 				Toast.makeText(view.getContext(),"Liked",Toast.LENGTH_SHORT).show();
 			}
+
+			@Override
+			public void onDisLikeClick() {
+				Toast.makeText(view.getContext(),"disLiked",Toast.LENGTH_SHORT).show();
+			}
 		});
 		// Inflate the layout for this fragment
 		return view;
