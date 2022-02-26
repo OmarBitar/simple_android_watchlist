@@ -25,13 +25,6 @@ public class MainActivity extends AppCompatActivity {
 		ft.replace(R.id.mainFragment,movieFrag).commit();
 
 		View cardViewLayout = getLayoutInflater().inflate(R.layout.text_row_item,null);
-		like = (RadioButton) cardViewLayout.findViewById(R.id.like);
-		dislike = (RadioButton) cardViewLayout.findViewById(R.id.dislike);
-
-
-		((RadioButton) like).setChecked(true);
-		boolean checked = ((RadioButton) like).isChecked();
-		Toast.makeText(this,"isChecked "+checked,Toast.LENGTH_SHORT).show();
 	}
 
 	public void onClickSeries(View view) {
@@ -48,9 +41,4 @@ public class MainActivity extends AppCompatActivity {
 		ft.replace(R.id.mainFragment,movieFrag).commit();
 	}
 
-
-	public void onDislike(View view) {
-
-		Toast.makeText(this,"disliked",Toast.LENGTH_SHORT).show();
-	}
 }
