@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -22,6 +23,17 @@ public class seriesFragment extends Fragment {
 		SeriesData seriesData = new SeriesData();
 		CustomAdapter adapter = new CustomAdapter(seriesData.getFilmTitles(),seriesData.getFilmPosters());
 		rc.setAdapter(adapter);
+		adapter.setListener(new CustomAdapter.Listener() {
+			@Override
+			public void onLikeClick() {
+				Toast.makeText(view.getContext(),"Liked series",Toast.LENGTH_SHORT).show();
+			}
+
+			@Override
+			public void onDisLikeClick() {
+				Toast.makeText(view.getContext(),"disliked series",Toast.LENGTH_SHORT).show();
+			}
+		});
 		return view;
 	}
 }
