@@ -19,7 +19,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
 	private Listener listener;
 
 	interface Listener {
-		void onClick();
+		void onLikeClick();
 	}
 
 	public void setListener(Listener listener) {
@@ -64,8 +64,6 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
 	public CustomAdapter(String[] dataSet, int[] imageSet) {
 		localDataSet = dataSet;
 		imageDataSet = imageSet;
-		// TODO look into this
-//		likeSatus = true;
 	}
 
 	// Create new views (invoked by the layout manager)
@@ -87,11 +85,10 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
 		// contents of the view with that element
 		viewHolder.getTextView().setText(localDataSet[position]);
 		viewHolder.getImageView().setImageResource(imageDataSet[position]);
-		viewHolder.getLikeView().setChecked(true);
 		viewHolder.getLikeView().setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				listener.onClick();
+				listener.onLikeClick();
 			}
 		});
 	}

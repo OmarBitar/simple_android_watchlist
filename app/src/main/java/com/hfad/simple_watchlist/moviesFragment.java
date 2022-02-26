@@ -28,7 +28,7 @@ public class moviesFragment extends Fragment {
 		rc.setAdapter(adapter);
 		adapter.setListener(new CustomAdapter.Listener() {
 			@Override
-			public void onClick() {
+			public void onLikeClick() {
 				Toast.makeText(view.getContext(),"Liked",Toast.LENGTH_SHORT).show();
 			}
 		});
